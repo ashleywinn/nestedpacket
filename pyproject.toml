@@ -11,3 +11,8 @@ dynamic = ["version", "description"]
 dependencies = [
     "bitstring >=4.0.1"
 ]
+
+[project.optional-dependencies]
+test = [
+    "pytest >=7.2.0"
+]
