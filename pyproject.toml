@@ -6,6 +6,7 @@ build-backend = "flit_core.buildapi"
 name = "nestedpacket"
 authors = [{name = "Ashley Winn", email = "ashley.winn@gmail.com"}]
 license = {file = "LICENSE"}
+readme = "README.rst"
 classifiers = ["License :: OSI Approved :: MIT License"]
 dynamic = ["version", "description"]
 dependencies = [
@@ -16,3 +17,6 @@ dependencies = [
 test = [
     "pytest >=7.2.0"
 ]
+
+[project.urls]
+Source = "https://github.com/ashleywinn/nestedpacket"
