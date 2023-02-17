@@ -3,7 +3,7 @@
 import nestedpacket
 
 
-eth_pkt = nestedpacket.EthPreamble()
+eth_pkt = nestedpacket.ethernet.EthPacket()
 eth_pkt.unpack([int(x, base=16) for x in """
         55 55 55 55 55 55 55 d5
         90 35 6b a0 cd 79 cc cd ef a5 d3 ee

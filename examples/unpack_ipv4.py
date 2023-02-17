@@ -19,7 +19,7 @@ pkt_1_byte_str = """
 """
 pkt_1_bytes = [int(x, base=16) for x in pkt_1_byte_str.split()]
 
-eth_pkt = nestedpacket.EthPreamble()
+eth_pkt = nestedpacket.ethernet.EthPacket()
 eth_pkt.unpack(pkt_1_bytes)
 
 printer = nestedpacket.TextBoxPrinter(25, 35)

@@ -4,10 +4,10 @@ import random
 
 from .nestedpacket import NestedPacket
 from .nestedpacket import UnpackResult
-from .ippacket import Ipv4Packet, Ipv6Packet
+from .tcpip import Ipv4Packet, Ipv6Packet
 
 
-class EthPreamble(NestedPacket):
+class EthPacket(NestedPacket):
     """Outer-most part of an Ethernet packet on the wire"""
     PREAMBLE_VAL = 0x55
     SFD_VAL      = 0xD5
@@ -72,6 +72,9 @@ class EthMacFrame(NestedPacket):
     def do_randomize(self):
         self.dest_addr = int(random.getrandbits(48))
         self.src_addr  = int(random.getrandbits(48))
+
+    def do_harmonize(self):
+        self.update_fcs()
 
     def create_nested_packet(self):
         return EthMacDataUnit()

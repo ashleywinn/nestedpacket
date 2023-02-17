@@ -1,11 +1,11 @@
 import pytest
 from nestedpacket import NestedPacket
-from nestedpacket import EthPreamble, EthMacFrame
-from nestedpacket import TcpPacket
+from nestedpacket.ethernet import EthPacket, EthMacFrame
+from nestedpacket.tcpip import TcpPacket
 
 @pytest.fixture()
 def good_packet_1():
-    eth_pkt = EthPreamble()
+    eth_pkt = EthPacket()
     eth_pkt.unpack([int(x, base=16) for x in """
         55 55 55 55 55 55 55 d5
         b2 d9 b1 29 68 62 27 72 f0 9b ff dd
@@ -26,7 +26,7 @@ def good_packet_1():
 
 @pytest.fixture()
 def corrupt_packet_1():
-    eth_pkt = EthPreamble()
+    eth_pkt = EthPacket()
     eth_pkt.unpack([int(x, base=16) for x in """
         55 55 55 55 55 55 55 d5
         b2 d9 b1 29 68 62 27 72 f0 9b ff dd
@@ -46,7 +46,7 @@ def corrupt_packet_1():
 
 @pytest.fixture()
 def good_packet_2():
-    eth_pkt = EthPreamble()
+    eth_pkt = EthPacket()
     eth_pkt.unpack([int(x, base=16) for x in """
         55 55 55 55 55 55 55 d5
         90 35 6b a0 cd 79 cc cd ef a5 d3 ee

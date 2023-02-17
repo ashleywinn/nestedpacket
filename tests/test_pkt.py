@@ -1,5 +1,6 @@
 import pytest
-from nestedpacket import NestedPacket, EthPreamble, EthMacFrame
+from nestedpacket import NestedPacket
+from nestedpacket.ethernet import EthPacket, EthMacFrame
 
 @pytest.fixture()
 def preamble_byte_list():
@@ -13,7 +14,7 @@ def preamble_byte_list():
 
 @pytest.fixture()
 def full_eth_frame(preamble_byte_list):
-    eth_pkt = EthPreamble()
+    eth_pkt = EthPacket()
     eth_pkt.unpack(preamble_byte_list)
     return eth_pkt
 
@@ -30,7 +31,7 @@ def mac_eth_frame(incrementing_byte_list):
 
 def test_preamble():
     """at least the first 3 bytes of the preamble are 0x55"""
-    eth_pkt = EthPreamble()
+    eth_pkt = EthPacket()
     for n, byte in enumerate(eth_pkt.pack()):
         if n < 4:
             assert byte == 0x55
@@ -43,12 +44,12 @@ def test_eth_src_addr():
     assert packed_bytes[9] == (mac_frame.src_addr >> 16) & 0xFF
 
 def test_eth_preamble_unpack_src_addr(preamble_byte_list):
-    eth_pkt = EthPreamble()
+    eth_pkt = EthPacket()
     eth_pkt.unpack(preamble_byte_list)
     assert eth_pkt.nested_packet.src_addr == 0x0708_090A_0B0C
 
 def test_eth_preamble_unpack_fcs(preamble_byte_list):
-    eth_pkt = EthPreamble()
+    eth_pkt = EthPacket()
     eth_pkt.unpack(preamble_byte_list)
     assert eth_pkt.nested_packet.fcs == 0x1A1B1C1D
 

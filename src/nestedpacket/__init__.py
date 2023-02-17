@@ -1,10 +1,9 @@
-"""Top-level package for nestedpacket"""
+"""A framework for generating, unpacking/dissecting and displaying layered packets"""
 
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 
 from .textboxprinter import TextBoxPrinter
 from .nestedpacket import *
-from .ethernetframes import *
-from .ippacket import *
-from .udpdatagram import *
+from . import ethernet
+from . import tcpip
 
