@@ -1,7 +1,7 @@
 NestedPacket: Headers and Trailers and more
 ===========================================
 
-**NestedPacket** is a framework and packet library for digital design verification. It is useful for generating meaningful random packet traffic and for unpacking collected byte streams. The base class ``NestedPacket`` is used to define the headers and trailers for each packet layer.
+**NestedPacket** is a packet framework and library for digital design verification. It was developed for use with Cocotb. My goal is to make it easier to generate meaningful random packet traffic and easier to unpack collected byte streams. The base class ``NestedPacket`` is used to define the headers and trailers for each packet layer.
 
 .. code-block:: python
 
